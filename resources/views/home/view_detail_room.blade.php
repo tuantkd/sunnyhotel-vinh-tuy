@@ -244,4 +244,20 @@
     </section>
     <!-- Rooms Section End -->
 
+    <script>
+        function bookroom(e) {
+            var ele = e.split(",");
+            var id_room = ele[0];
+            //alert(id);
+            $.ajax({
+                url: '{{ url('book-room') }}/' + id_room,
+                type: 'GET',
+                data: { id: ele[0] },
+                success: function (result) {
+                    location.href = '{{ url('index-bookroom') }}';
+                }
+            });
+        };
+    </script>
+
 @endsection

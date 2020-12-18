@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Middleware\CheckLogin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +12,7 @@
 */
 /*ADMIN*/
 //Trang chủ
-Route::get('home-admin', 'AdminController@index_admin');
+Route::get('home-admin', 'AdminController@index_admin')->middleware(CheckLogin::class);
 /*==================================================*/
 
 
@@ -20,17 +20,17 @@ Route::get('home-admin', 'AdminController@index_admin');
 
 /*==================================================*/
 //Danh sách người dùng
-Route::get('list-user', 'AdminController@list_user');
-Route::post('post-list-user', 'AdminController@post_list_user');
+Route::get('list-user', 'AdminController@list_user')->middleware(CheckLogin::class);
+Route::post('post-list-user', 'AdminController@post_list_user')->middleware(CheckLogin::class);
 
 //Xóa người dùng
-Route::get('delete-user', 'AdminController@delete_user');
+Route::get('delete-user', 'AdminController@delete_user')->middleware(CheckLogin::class);
 
 //thông tin cá nhân
-Route::get('profile-admin', 'AdminController@profile_admin');
+Route::get('profile-admin', 'AdminController@profile_admin')->middleware(CheckLogin::class);
 
 //profile
-Route::put('update-profile-user/{id_user}', 'AdminController@update_profile_user');
+Route::put('update-profile-user/{id_user}', 'AdminController@update_profile_user')->middleware(CheckLogin::class);
 /*==================================================*/
 
 
@@ -38,88 +38,92 @@ Route::put('update-profile-user/{id_user}', 'AdminController@update_profile_user
 
 /*==================================================*/
 //Danh sách loại phòng
-Route::get('list-category-room', 'AdminController@list_category_room');
-Route::post('post-category-room', 'AdminController@post_category_room');
+Route::get('list-category-room', 'AdminController@list_category_room')->middleware(CheckLogin::class);
+Route::post('post-category-room', 'AdminController@post_category_room')->middleware(CheckLogin::class);
 
 //Xóa loại phòng
-Route::get('delete-category-room', 'AdminController@delete_category_room');
+Route::get('delete-category-room', 'AdminController@delete_category_room')->middleware(CheckLogin::class);
 /*==================================================*/
 
 
 
 /*==================================================*/
 //danh dách phòng
-Route::get('list-room', 'AdminController@list_room');
-Route::post('post-room', 'AdminController@post_room');
+Route::get('list-room', 'AdminController@list_room')->middleware(CheckLogin::class);
+
+//Xem theo loai phòng
+Route::get('view-category/{id}', 'AdminController@view_category')->middleware(CheckLogin::class);
+
+Route::post('post-room', 'AdminController@post_room')->middleware(CheckLogin::class);
 
 //danh dách phòng (sửa)
-Route::get('edit-room/{id_room}', 'AdminController@edit_room');
+Route::get('edit-room/{id_room}', 'AdminController@edit_room')->middleware(CheckLogin::class);
 
 //Cập nhật phòng
-Route::put('update-room/{id_room}', 'AdminController@update_room');
+Route::put('update-room/{id_room}', 'AdminController@update_room')->middleware(CheckLogin::class);
 
 //Xóa phòng
-Route::get('delete-room', 'AdminController@delete_room');
+Route::get('delete-room', 'AdminController@delete_room')->middleware(CheckLogin::class);
 /*==================================================*/
 
 //danh sách hình ảnh phòng
-Route::get('list-image-room', 'AdminController@list_image_room');
-Route::post('post-image-room', 'AdminController@post_image_room');
+Route::get('list-image-room', 'AdminController@list_image_room')->middleware(CheckLogin::class);
+Route::post('post-image-room', 'AdminController@post_image_room')->middleware(CheckLogin::class);
 
 //Xóa  hình ảnh phòng
-Route::get('delete-image-room', 'AdminController@delete_image_room');
+Route::get('delete-image-room', 'AdminController@delete_image_room')->middleware(CheckLogin::class);
 
 
 
 /*==================================================*/
 //danh sách khách hàng
-Route::get('list-customer', 'AdminController@list_customer');
-Route::post('post-customer', 'AdminController@post_customer');
+Route::get('list-customer', 'AdminController@list_customer')->middleware(CheckLogin::class);
+Route::post('post-customer', 'AdminController@post_customer')->middleware(CheckLogin::class);
 
 //danh sách khách hàng(SỬA)
-Route::get('edit-customer', 'AdminController@edit_customer');
+Route::get('edit-customer', 'AdminController@edit_customer')->middleware(CheckLogin::class);
 
 //Xóa khách hàng
-Route::get('delete-customer', 'AdminController@delete_customer');
+Route::get('delete-customer', 'AdminController@delete_customer')->middleware(CheckLogin::class);
 
 
 
 /*==================================================*/
 //danh sách đặt phòng
-Route::get('list-book-room', 'AdminController@list_book_room');
+Route::get('list-book-room', 'AdminController@list_book_room')->middleware(CheckLogin::class)->middleware(CheckLogin::class);
 
 //Xem lich su đặt phòng
-Route::get('view-history-book-room', 'AdminController@view_history_book_room');
+Route::get('view-history-book-room', 'AdminController@view_history_book_room')->middleware(CheckLogin::class);
 
 //Sửa danh sách đặt phòng
-Route::get('edit-book-room', 'AdminController@edit_book_room');
+Route::get('edit-book-room', 'AdminController@edit_book_room')->middleware(CheckLogin::class);
 
 //Xóa đặt phòng
-Route::get('delete-book-room/{id}', 'AdminController@delete_book_room');
+Route::get('delete-book-room/{id}', 'AdminController@delete_book_room')->middleware(CheckLogin::class);
 
 //chi tiết đặt phong mới
-Route::get('list-book-detail/{id}', 'AdminController@list_book_detail');
+Route::get('list-book-detail/{id}', 'AdminController@list_book_detail')->middleware(CheckLogin::class);
 
 //chi tiết đặt phong mới
-Route::get('list-book-detail-temp/{id}', 'AdminController@list_book_detail_temp');
+Route::get('list-book-detail-temp/{id}', 'AdminController@list_book_detail_temp')->middleware(CheckLogin::class);
 
 //Xóa sau khi xuất hóa đơn
-Route::get('delete-book-room-temps/{id}', 'AdminController@delete_book_room_temps');
+Route::get('delete-book-room-temps/{id}', 'AdminController@delete_book_room_temps')->middleware(CheckLogin::class);
 
 //Duyệt
-Route::get('check-book-room/{id_bookroom}/{id_bookdetail}', 'AdminController@check_book_room');
+Route::get('check-book-room/{id_bookroom}/{id_bookdetail}', 'AdminController@check_book_room')->middleware(CheckLogin::class);
 
 //chi tiết đặt phong mới
-Route::get('edit-book-detail', 'AdminController@edit_book_detail');
+Route::get('edit-book-detail', 'AdminController@edit_book_detail')->middleware(CheckLogin::class);
 
 /*===========================================================*/
 //QUYỀN TRUY CẬP
-Route::get('list-role-access', 'AdminController@list_role_access');
-Route::post('post-list-role-access', 'AdminController@post_list_role_access');
-Route::get('delete-role/{id}', 'QuanTriController@delete_role');
+Route::get('list-role-access', 'AdminController@list_role_access')->middleware(CheckLogin::class);
+Route::post('post-list-role-access', 'AdminController@post_list_role_access')->middleware(CheckLogin::class);
+Route::get('delete-role/{id}', 'QuanTriController@delete_role')->middleware(CheckLogin::class);
 
 //QUYỀN TRUY CẬP(SỬA)
-Route::get('edit-role-access', 'AdminController@edit_role_access');
+Route::get('edit-role-access', 'AdminController@edit_role_access')->middleware(CheckLogin::class);
 /*===========================================================*/
 
 
@@ -165,13 +169,15 @@ Route::get('delete-service', 'AdminController@delete_service');
 
 
 /*HOME*/
-
 //trang đánh giá sao
 Route::post('post-rating-star/{id_room}', 'HomeController@post_rating_star');
 
 
 //hiển thị trang đăng kí
 Route::get('registration', 'HomeController@registration');
+
+//hiển thị xem email
+Route::get('mail', 'HomeController@mail');
 
 //đăng kí thành viên
 Route::post('post-add-member', 'HomeController@post_add_member');
@@ -210,6 +216,7 @@ Route::get('index-about', 'HomeController@index_about');
 
 //Hiển thị trang liên hệ
 Route::get('index-contact', 'HomeController@index_contact');
+
 //Thêm khách hàng góp ý
 Route::post('post-customer-feedback', 'HomeController@post_customer_feedback');
 

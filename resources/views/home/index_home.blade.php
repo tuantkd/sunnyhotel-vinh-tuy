@@ -23,7 +23,7 @@ Trang Chủ
     <!-- Hero Slider Begin -->
     <div class="hero-slider">
         <div class="slider-item">
-            <div class="single-slider-item set-bg" 
+            <div class="single-slider-item set-bg"
             data-setbg="{{ url('public/home/img/nen.jpg') }}">
                 <div class="container">
                     <div class="row">
@@ -40,7 +40,7 @@ Trang Chủ
     <!-- Rooms Section Begin -->
     <section class="room-section spad">
         <div class="container">
-            
+
             @php($get_room_new = DB::table('rooms')->latest()->paginate(3))
             @foreach($get_room_new as $data)
             <div class="rooms-page-item">
@@ -62,7 +62,9 @@ Trang Chủ
                     <div class="col-lg-6">
                         <div class="room-text">
                             <div class="room-title">
+                                <a href="{{ url('view-detail-room/'.$data->id) }}" class="hover-color">
                                 <h2>{{ $data ->room_name }}</h2><br>
+                                </a>
                                 <div class="room-price">
                                     <span></span>
                                     <h2>Giá: {{ number_format($data ->room_price) }} VND/Ngày</h2>
@@ -132,7 +134,7 @@ Trang Chủ
         <div class="container">
             @php($get_services = DB::table('services')->latest()->paginate(3))
             @foreach($get_services as $value)
-            
+
 
             <div class="facilities-content">
                 <div class="row">
@@ -140,14 +142,14 @@ Trang Chủ
                         <div class="section-title">
                         </div>
                     </div>
-                    
-                    
+
+
                     @php($image_services = DB::table('image_services')
                     ->where('service_id', $value->id)->get())
                     @foreach($image_services as $data)
                     @if($loop->first)
                     <div class="col-lg-6 p-0">
-                        <div class="facilities-img set-bg" 
+                        <div class="facilities-img set-bg"
                         data-setbg="{{ url('public/upload_image_service/'.$data->service_image) }}">
                         </div>
                     </div>
@@ -167,13 +169,13 @@ Trang Chủ
                             </div>
                         </div>
                     </div>
-                    
-                    
-                    
+
+
+
                 </div>
             </div>
 
-            
+
             @endforeach
         </div>
     </div>
@@ -193,7 +195,7 @@ Trang Chủ
                     success: function (result) {
                         location.href = '{{ url('index-bookroom') }}';
                     }
-                });  
+                });
             };
     </script>
 

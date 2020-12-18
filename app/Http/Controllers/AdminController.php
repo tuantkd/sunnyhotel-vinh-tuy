@@ -162,8 +162,14 @@ class AdminController extends Controller
     //Trang hiển thị ds phòng
     public function list_room()
     {
-        $get_room = Room::all();
-        return view ('admin.room.list_room',['get_room'=>$get_room]);
+        return view ('admin.room.list_room');
+    }
+
+    //Xem loai phòng
+    public function view_category($id)
+    {
+        $view_categorys = Categoryroom::find($id);
+        return view ('admin.room.view_category',['view_categorys'=>$view_categorys]);
     }
 
     public function post_room(Request $request)
