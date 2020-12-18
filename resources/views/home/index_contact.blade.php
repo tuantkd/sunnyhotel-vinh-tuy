@@ -6,7 +6,7 @@ Liên Hệ
 
 
 @section('content_home')
-    
+
 
     <script>
         var msg = '{{Session::get('add_customer_feedback')}}';
@@ -46,19 +46,19 @@ Liên Hệ
                             <h2>Thông Tin Liên Lạc</h2>
                             <ul>
                                 <li>
-                                    <img src="{{ url('public/home/img/placeholder-copy.png') }}"> 
+                                    <img src="{{ url('public/home/img/placeholder-copy.png') }}">
                                     <span>5-7 Hai Bà Trưng, An Lạc, Ninh Kiều,Cần Thơ</span>
                                 </li>
                                 <li>
-                                    <img src="{{ url('public/home/img/phone-copy.png') }}"> 
+                                    <img src="{{ url('public/home/img/phone-copy.png') }}">
                                     <span>+(0292) 3 95 95 95</span>
                                 </li>
                                 <li>
-                                    <img src="{{ url('public/home/img/envelop.png') }}"> 
+                                    <img src="{{ url('public/home/img/envelop.png') }}">
                                     <span>Vinhtuy@gmail.com</span>
                                 </li>
                                 <li>
-                                    <img src="{{ url('public/home/img/clock-copy.png') }}"> 
+                                    <img src="{{ url('public/home/img/clock-copy.png') }}">
                                     <span>Giờ làm việc: 24/24h </span>
                                 </li>
                             </ul>
@@ -74,7 +74,7 @@ Liên Hệ
                                 <div class="col-lg-12">
                                     <p>Họ và tên</p>
                                     <div class="input-group">
-                                        <input type="text" placeholder="Nhập họ và tên" 
+                                        <input type="text" placeholder="Nhập họ và tên"
                                         name="txt_fullname">
                                         <img src="{{ url('public/home/img/edit.png') }}">
 
@@ -86,7 +86,7 @@ Liên Hệ
                                 <div class="col-lg-12">
                                     <p>Điện thoại</p>
                                     <div class="input-group phone-num">
-                                        <input type="number" placeholder="Nhập số điện thoại" 
+                                        <input type="number" placeholder="Nhập số điện thoại"
                                         name="txt_phone">
                                         <img src="{{ url('public/home/img/phone-copy.png') }}">
 
@@ -99,7 +99,7 @@ Liên Hệ
                                 <div class="col-lg-12">
                                     <p>Địa chỉ</p>
                                     <div class="input-group phone-num">
-                                        <input type="text" placeholder="Nhập địa chỉ cư trú" 
+                                        <input type="text" placeholder="Nhập địa chỉ cư trú"
                                         name="txt_address">
                                         <img src="{{ url('public/home/img/placeholder-copy.png') }}">
 

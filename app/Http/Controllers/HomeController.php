@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Mail\BookroomMail;
 use App\RatingStar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -14,9 +15,16 @@ use App\Customer;
 use App\BookRoom;
 use App\BookDetail;
 use App\User;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
+    //Hiển thị trang xem email
+    public function mail()
+    {
+        return view('mail.send_mail');
+    }
+
     //Hiển thị trang đăng kí
     public function registration()
     {
@@ -42,15 +50,6 @@ class HomeController extends Controller
         return redirect()->back()->with('post_rating_star','');
     }
 
-//    public function post_rating_star2(Request $request, $id_room)
-//    {
-//        $add_star = new RatingStar();
-//        $add_star->user_id = Auth::id();
-//        $add_star->room_id = $id_room;
-//        $add_star->number_star = $request->input('star2');
-//        $add_star->save();
-//        return "Đã thêm vào DB";
-//    }
 
     public function post_add_member(Request $request)
     {
@@ -241,12 +240,21 @@ class HomeController extends Controller
         $add_book_room->bookroom_deposit_money = $request->input('txt_money_deposit');
         $add_book_room->fullname_customer = $request->input('txt_fullname_customer');
         $add_book_room->phone_customer = $request->input('txt_phone');
+        $add_book_room->bookroom_email = $request->input('txt_email');
         $add_book_room->address_customer = $request->input('txt_address');
         $add_book_room->save();
 
+        //Thực hiện gửi email
+        $get_bookroom = DB::table('book_rooms')->latest()->first();
+        $id_bookroom = $get_bookroom->id;
+        $email_bookroom = $get_bookroom->bookroom_email;
+
+        $send_mail = BookRoom::findOrFail($id_bookroom);
+
+        Mail::to($email_bookroom)->send(new BookroomMail($send_mail));
+
         //Thực hiện thứ 3
         $max_id_book_room = DB::table('book_rooms')->max('id');
-
 
 
         //Thực hiện thứ 4 Đặt phòng

@@ -69,11 +69,11 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     @endif
                     @endforeach
                     @endif
-                    
+
                     <div class="col-lg-6">
                         <div class="check-form">
                             <h2>Đặt phòng</h2>
@@ -98,7 +98,7 @@
                                         <input type="text" class="datepicker-1"
                                         name="txt_date_start">
                                         <img src="{{ url('public/home/img/calendar.png') }}">
-                                        
+
                                     </div>
                                     <div class="date-select to">
                                         <p>Ngày trả</p>
@@ -134,20 +134,29 @@
                                 <div class="datepicker">
                                     <div class="date-select">
                                         <p>Họ tên khách hàng</p>
-                                        <input type="text" placeholder="Nhập họ và tên" 
+                                        <input type="text" placeholder="Nhập họ và tên"
                                         name="txt_fullname_customer">
                                     </div>
-                                    <div class="date-select to">
+                                </div>
+                                <div class="datepicker">
+                                    <div class="date-select">
                                         <p>Điện thoại</p>
-                                        <input type="number" placeholder="Nhập điện thoại" 
+                                        <input type="number" placeholder="Nhập điện thoại"
                                         name="txt_phone" id="mobile" onblur="Test_number_phone();">
+                                    </div>
+                                </div>
+                                <div class="datepicker">
+                                    <div class="date-select">
+                                        <p>Email</p>
+                                        <input type="email" placeholder="Nhập email"
+                                        name="txt_email">
                                     </div>
                                 </div>
 
                                 <div class="datepicker">
                                     <div class="date-select">
                                         <p>Địa chỉ</p>
-                                        <input type="text" placeholder="Nhập địa chỉ" 
+                                        <input type="text" placeholder="Nhập địa chỉ"
                                         name="txt_address">
                                     </div>
                                 </div>
@@ -159,10 +168,10 @@
                             </form>
                         </div>
                     </div>
-                       
+
                 </div>
             </div>
-        </div> 
+        </div>
     </section>
 
     <script type="text/javascript">
@@ -170,7 +179,7 @@
             var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
             var mobile = $('#mobile').val();
             if(mobile !==''){
-                if (vnf_regex.test(mobile) == false) 
+                if (vnf_regex.test(mobile) == false)
                 {
                     alert('Số điện thoại của bạn không đúng định dạng!');
                     document.getElementById('mobile').value = "";
